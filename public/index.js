@@ -157,9 +157,25 @@ console.log(actors.length);
 /* FONCTION */
 function BookingPrice() {
   for (const evt of events) {
-    for(const bar of bars) {
+    for (const bar of bars) {
       if (bar.id === evt.barId) {
-        evt.price = evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson;
+
+        evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson);
+
+        if (evt.persons > 10)
+        {
+          evt.price = evt.price * 0.90;
+        }
+
+        if (evt.persons > 20)
+        {
+          evt.price = evt.price * 0.70;
+        }
+
+        if (evt.persons > 60)
+        {
+          evt.price = evt.price * 0.50;
+        }
       }
     }
   }
