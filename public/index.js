@@ -159,22 +159,128 @@ function BookingPrice() {
   for (const evt of events) {
     for (const bar of bars) {
       if (bar.id === evt.barId) {
+        if (evt.persons <= 10)
+        {
+          evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson);
 
-        evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson);
+          evt.commission = evt.price * 0.30;
+          evt.commission.insurance = evt.commission * 0.50;
+          evt.commission.treasury = evt.persons * 1;
+          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+
+          if (evt.options.deductibleReduction === true) {
+            evt.price = evt.price + 1 * evt.persons ;
+            evt.commission.privateaser = evt.commission.privateaser + 1 * evt.persons ;
+          }
+
+          for (const act of actors) {
+            if (act.eventId === evt.id) {
+              /* booker */
+              act.payment[0].amount = evt.price ;
+              /* bar */
+              act.payment[1].amount = evt.price - evt.commission ;
+              /* insurance */
+              act.payment[2].amount = evt.commission.insurance ;
+              /* treasury */
+              act.payment[3].amount = evt.commission.treasury ;
+              /* privateaser */
+              act.payment[4].amount = evt.commission.privateaser ;
+            }
+          }
+
+        }
 
         if (evt.persons > 10)
         {
-          evt.price = evt.price * 0.90;
+          evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson) * 0.90;
+          evt.commission = evt.price * 0.30;
+
+          evt.commission.insurance = evt.commission * 0.50;
+          evt.commission.treasury = evt.persons * 1;
+          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+
+          if (evt.options.deductibleReduction === true) {
+            evt.price = evt.price + 1 * evt.persons ;
+            evt.commission.privateaser = evt.commission.privateaser + 1 * evt.persons ;
+          }
+
+          for (const act of actors) {
+            if (act.eventId === evt.id) {
+              /* booker */
+              act.payment[0].amount = evt.price ;
+              /* bar */
+              act.payment[1].amount = evt.price - evt.commission ;
+              /* insurance */
+              act.payment[2].amount = evt.commission.insurance ;
+              /* treasury */
+              act.payment[3].amount = evt.commission.treasury ;
+              /* privateaser */
+              act.payment[4].amount = evt.commission.privateaser ;
+            }
+          }
+
         }
 
         if (evt.persons > 20)
         {
-          evt.price = evt.price * 0.70;
+          evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson) * 0.70;
+          evt.commission = evt.price * 0.30;
+
+          evt.commission.insurance = evt.commission * 0.50;
+          evt.commission.treasury = evt.persons * 1;
+          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+
+          if (evt.options.deductibleReduction === true) {
+            evt.price = evt.price + 1 * evt.persons ;
+            evt.commission.privateaser = evt.commission.privateaser + 1 * evt.persons ;
+          }
+
+          for (const act of actors) {
+            if (act.eventId === evt.id) {
+              /* booker */
+              act.payment[0].amount = evt.price ;
+              /* bar */
+              act.payment[1].amount = evt.price - evt.commission ;
+              /* insurance */
+              act.payment[2].amount = evt.commission.insurance ;
+              /* treasury */
+              act.payment[3].amount = evt.commission.treasury ;
+              /* privateaser */
+              act.payment[4].amount = evt.commission.privateaser ;
+            }
+          }
+
         }
 
         if (evt.persons > 60)
         {
-          evt.price = evt.price * 0.50;
+          evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson) * 0.50;
+          evt.commission = evt.price * 0.30;
+
+          evt.commission.insurance = evt.commission * 0.50;
+          evt.commission.treasury = evt.persons * 1;
+          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+
+          if (evt.options.deductibleReduction === true) {
+            evt.price = evt.price + 1 * evt.persons ;
+            evt.commission.privateaser = evt.commission.privateaser + 1 * evt.persons ;
+          }
+
+          for (const act of actors) {
+            if (act.eventId === evt.id) {
+              /* booker */
+              act.payment[0].amount = evt.price ;
+              /* bar */
+              act.payment[1].amount = evt.price - evt.commission ;
+              /* insurance */
+              act.payment[2].amount = evt.commission.insurance ;
+              /* treasury */
+              act.payment[3].amount = evt.commission.treasury ;
+              /* privateaser */
+              act.payment[4].amount = evt.commission.privateaser ;
+            }
+          }
+
         }
       }
     }
