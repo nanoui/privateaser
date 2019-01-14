@@ -163,10 +163,10 @@ function BookingPrice() {
         {
           evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson);
 
-          evt.commission = evt.price * 0.30;
-          evt.commission.insurance = evt.commission * 0.50;
+          let commission = evt.price * 0.30;
+          evt.commission.insurance = commission * 0.50;
           evt.commission.treasury = evt.persons * 1;
-          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+          evt.commission.privateaser = commission - evt.commission.treasury - evt.commission.insurance;
 
           if (evt.options.deductibleReduction === true) {
             evt.price = evt.price + 1 * evt.persons ;
@@ -178,7 +178,7 @@ function BookingPrice() {
               /* booker */
               act.payment[0].amount = evt.price ;
               /* bar */
-              act.payment[1].amount = evt.price - evt.commission ;
+              act.payment[1].amount = evt.price - commission ;
               /* insurance */
               act.payment[2].amount = evt.commission.insurance ;
               /* treasury */
@@ -193,11 +193,11 @@ function BookingPrice() {
         if (evt.persons > 10)
         {
           evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson) * 0.90;
-          evt.commission = evt.price * 0.30;
 
-          evt.commission.insurance = evt.commission * 0.50;
+          let commission = evt.price * 0.30;
+          evt.commission.insurance = commission * 0.50;
           evt.commission.treasury = evt.persons * 1;
-          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+          evt.commission.privateaser = commission - evt.commission.treasury - evt.commission.insurance;
 
           if (evt.options.deductibleReduction === true) {
             evt.price = evt.price + 1 * evt.persons ;
@@ -209,7 +209,7 @@ function BookingPrice() {
               /* booker */
               act.payment[0].amount = evt.price ;
               /* bar */
-              act.payment[1].amount = evt.price - evt.commission ;
+              act.payment[1].amount = evt.price - commission ;
               /* insurance */
               act.payment[2].amount = evt.commission.insurance ;
               /* treasury */
@@ -224,11 +224,11 @@ function BookingPrice() {
         if (evt.persons > 20)
         {
           evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson) * 0.70;
-          evt.commission = evt.price * 0.30;
 
-          evt.commission.insurance = evt.commission * 0.50;
+          let commission = evt.price * 0.30;
+          evt.commission.insurance = commission * 0.50;
           evt.commission.treasury = evt.persons * 1;
-          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+          evt.commission.privateaser = commission - evt.commission.treasury - evt.commission.insurance;
 
           if (evt.options.deductibleReduction === true) {
             evt.price = evt.price + 1 * evt.persons ;
@@ -240,7 +240,7 @@ function BookingPrice() {
               /* booker */
               act.payment[0].amount = evt.price ;
               /* bar */
-              act.payment[1].amount = evt.price - evt.commission ;
+              act.payment[1].amount = evt.price - commission ;
               /* insurance */
               act.payment[2].amount = evt.commission.insurance ;
               /* treasury */
@@ -255,11 +255,11 @@ function BookingPrice() {
         if (evt.persons > 60)
         {
           evt.price = (evt.time * bar.pricePerHour + evt.persons * bar.pricePerPerson) * 0.50;
-          evt.commission = evt.price * 0.30;
 
-          evt.commission.insurance = evt.commission * 0.50;
+          let commission = evt.price * 0.30;
+          evt.commission.insurance = commission * 0.50;
           evt.commission.treasury = evt.persons * 1;
-          evt.commission.privateaser = evt.commission - evt.commission.treasury - evt.commission.insurance;
+          evt.commission.privateaser = commission - evt.commission.treasury - evt.commission.insurance;
 
           if (evt.options.deductibleReduction === true) {
             evt.price = evt.price + 1 * evt.persons ;
@@ -271,7 +271,7 @@ function BookingPrice() {
               /* booker */
               act.payment[0].amount = evt.price ;
               /* bar */
-              act.payment[1].amount = evt.price - evt.commission ;
+              act.payment[1].amount = evt.price - commission ;
               /* insurance */
               act.payment[2].amount = evt.commission.insurance ;
               /* treasury */
